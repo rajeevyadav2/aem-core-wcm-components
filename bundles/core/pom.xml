@@ -36,7 +36,7 @@
     <scm>
         <connection>scm:git:https://git.corp.adobe.com/CQ/aem-core-wcm-components.git</connection>
         <developerConnection>scm:git:git@git.corp.adobe.com:CQ/aem-core-wcm-components.git</developerConnection>
-        <url>https://git.corp.adobe.com/CQ/aem-core-wcm-components/tree/master/bundles/core</url>
+        <url>https://git.corp.adobe.com/CQ/aem-core-wcm-components/tree/release/630/bundles/core</url>
         <tag>HEAD</tag>
     </scm>
 
