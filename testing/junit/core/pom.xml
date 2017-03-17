@@ -23,19 +23,19 @@
     <parent>
         <groupId>com.adobe.cq</groupId>
         <artifactId>core.wcm.components.parent</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1-SNAPSHOT</version>
         <relativePath>../../../parent/pom.xml</relativePath>
     </parent>
 
     <artifactId>core.wcm.components.junit.core</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <name>Adobe Experience Manager Core WCM Components JUnit Testing</name>
 
     <scm>
         <connection>scm:git:https://git.corp.adobe.com/CQ/aem-core-wcm-components.git</connection>
         <developerConnection>scm:git:git@git.corp.adobe.com:CQ/aem-core-wcm-components.git</developerConnection>
         <url>https://git.corp.adobe.com/CQ/aem-core-wcm-components/tree/release/630/testing/junit/core</url>
-        <tag>core.wcm.components.reactor-1.0.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <description>Useful tools for testing HTL-based AEM components</description>
