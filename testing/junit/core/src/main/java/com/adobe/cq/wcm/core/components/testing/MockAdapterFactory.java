@@ -17,11 +17,17 @@ package com.adobe.cq.wcm.core.components.testing;
 
 import org.apache.sling.api.adapter.AdapterFactory;
 import org.apache.sling.api.resource.Resource;
-import org.osgi.annotation.versioning.ProviderType;
+import org.osgi.service.component.annotations.Component;
 
 import com.day.cq.wcm.api.policies.ContentPolicyMapping;
 
-@ProviderType
+@Component(
+        service = AdapterFactory.class,
+        property = {
+                AdapterFactory.ADAPTABLE_CLASSES + "=org.apache.sling.api.resource.Resource",
+                AdapterFactory.ADAPTER_CLASSES + "=com.day.cq.wcm.api.policies.ContentPolicyMapping"
+        }
+)
 public class MockAdapterFactory implements AdapterFactory {
 
     @Override

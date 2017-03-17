@@ -31,6 +31,7 @@ import org.apache.sling.commons.mime.MimeTypeService;
 import org.apache.sling.testing.mock.sling.servlet.MockRequestPathInfo;
 import org.apache.sling.testing.mock.sling.servlet.MockSlingHttpServletRequest;
 import org.apache.sling.testing.mock.sling.servlet.MockSlingHttpServletResponse;
+import org.apache.sling.testing.resourceresolver.MockResource;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -84,7 +85,7 @@ public class AdaptiveImageServletTest {
         aemContext.load().json("/image/test-conf.json", "/conf");
         aemContext.load().binaryFile("/image/" + IMAGE_BINARY_NAME, ASSET_PATH);
         aemContext.registerInjectActivateService(new MockAdapterFactory());
-        resourceResolver = aemContext.resourceResolver();
+        resourceResolver = spy(aemContext.resourceResolver());
         contentPolicyManager = mock(ContentPolicyManager.class);
         aemContext.registerAdapter(ResourceResolver.class, ContentPolicyManager.class,
                 new Function<ResourceResolver, ContentPolicyManager>() {
@@ -231,8 +232,10 @@ public class AdaptiveImageServletTest {
     private MockSlingHttpServletRequest prepareRequest(String resourcePath, String selectorString, String extension) {
         MockSlingHttpServletRequest request = aemContext.request();
         Resource imageResource = resourceResolver.getResource(resourcePath);
-        request.setResource(imageResource);
-        aemContext.currentResource(imageResource);
+        MockResource resource = new MockResource(resourcePath, imageResource.getValueMap(), resourceResolver);
+        doReturn(null).when(resourceResolver).getAttribute(anyString());
+        request.setResource(resource);
+        aemContext.currentResource(resource);
         MockRequestPathInfo requestPathInfo = (MockRequestPathInfo) request.getRequestPathInfo();
         requestPathInfo.setSelectorString(selectorString);
         requestPathInfo.setExtension(extension);

@@ -61,7 +61,7 @@
         // set mandatory alt text
         .fillInput("input[name='./alt']",altText)
         // close the side panel
-        .execTestCase(h.steps.aem.commons.closeSidePanel);
+        .execTestCase(c.closeSidePanel);
 
 
 

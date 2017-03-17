@@ -23,7 +23,7 @@
     <parent>
         <groupId>com.adobe.cq</groupId>
         <artifactId>core.wcm.components.parent</artifactId>
-        <version>0.9.50</version>
+        <version>0.9.51-SNAPSHOT</version>
         <relativePath>../../../parent/pom.xml</relativePath>
     </parent>
 
@@ -39,6 +39,37 @@
     </scm>
 
     <description>Useful tools for testing HTL-based AEM components</description>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <id>bundle-manifest</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>manifest</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>baseline</id>
+                        <goals>
+                            <goal>baseline</goal>
+                        </goals>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <exportScr>true</exportScr>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>
@@ -77,7 +108,7 @@
         </dependency>
         <dependency>
             <groupId>com.day.cq</groupId>
-            <artifactId>cq-quickstart</artifactId>
+            <artifactId>cq-quickstart-beta</artifactId>
             <classifier>apis</classifier>
         </dependency>
     </dependencies>

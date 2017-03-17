@@ -23,7 +23,7 @@
     <parent>
         <groupId>com.adobe.cq</groupId>
         <artifactId>core.wcm.components.parent</artifactId>
-        <version>0.9.50</version>
+        <version>0.9.51-SNAPSHOT</version>
         <relativePath>../../parent/pom.xml</relativePath>
     </parent>
 
@@ -174,15 +174,6 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.adobe.cq</groupId>
-            <artifactId>cq-experience-fragments</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.adobe.cq</groupId>
-            <artifactId>cq-experience-fragments-social</artifactId>
-        </dependency>
-
 
         <!-- for testing we need the new ResourceTypeBasedResourcePicker -->
         <dependency>
@@ -225,27 +216,16 @@
             <artifactId>jackson-databind</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.day.cq.wcm</groupId>
-            <artifactId>cq-wcm-foundation</artifactId>
-            <version>5.10.44</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>cq-integration-testing</artifactId>
-                    <groupId>com.adobe.cq.testing</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-imaging</artifactId>
-            <version>1.0-R1725432-B002</version>
+            <version>1.0-R1534292</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.adobe.cq</groupId>
-            <artifactId>com.adobe.cq.wcm.core.junit.core</artifactId>
-            <version>0.9.10</version>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>core.wcm.components.junit.core</artifactId>
             <scope>test</scope>
+            <version>0.9.13-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
@@ -254,11 +234,9 @@
         </dependency>
         <dependency>
             <groupId>com.day.cq</groupId>
-            <artifactId>cq-quickstart</artifactId>
+            <artifactId>cq-quickstart-beta</artifactId>
             <classifier>apis</classifier>
         </dependency>
-
-
     </dependencies>
 
 </project>

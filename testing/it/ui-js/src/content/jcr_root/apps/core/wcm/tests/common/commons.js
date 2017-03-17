@@ -14,9 +14,9 @@
  *  limitations under the License.
  */
 
-;(function(h, $){
+;(function(h, $) {
 
-    hobs.config.pacing_delay = 250;
+    //hobs.config.pacing_delay = 250;
 
     // shortcut
     var c = window.CQ.CoreComponentsIT.commons;
@@ -30,13 +30,13 @@
 
     // core component resource types
     // text component
-    c.rtText  =  "core/wcm/components/text/v1/text";
+    c.rtText = "core/wcm/components/text/v1/text";
     // title component
-    c.rtTitle  =  "core/wcm/components/title/v1/title";
+    c.rtTitle = "core/wcm/components/title/v1/title";
     // list component
-    c.rtList  =  "core/wcm/components/list/v1/list";
+    c.rtList = "core/wcm/components/list/v1/list";
     // image component
-    c.rtImage  =  "core/wcm/components/image/v1/image";
+    c.rtImage = "core/wcm/components/image/v1/image";
     // breadcrumb component
     c.rtBreadcrumb = "core/wcm/components/breadcrumb/v1/breadcrumb";
     // form container
@@ -48,7 +48,7 @@
     // form option
     c.rtFormOptions = "core/wcm/components/form/options/v1/options";
     // hidden field
-    c.rtFormHidden  = "core/wcm/components/form/hidden/v1/hidden"
+    c.rtFormHidden = "core/wcm/components/form/hidden/v1/hidden"
 
     // selectors
 
@@ -68,8 +68,8 @@
      */
     c.createPage = function (templatePath, parentPath, pageName, dynParName, done) {
         // mandatory check
-        if (parentPath == null || templatePath == null || pageName == null || done == null){
-            if(done) done(false,"createPage failed! mandatory parameter(s) missing!");
+        if (parentPath == null || templatePath == null || pageName == null || done == null) {
+            if (done) done(false, "createPage failed! mandatory parameter(s) missing!");
             return;
         }
 
@@ -88,28 +88,28 @@
             }
         })
             // when the request was successful
-            .done(function(data,textStatus,jqXHR) {
+            .done(function (data, textStatus, jqXHR) {
                 // extract the created page path from the returned HTML
                 var path = jQuery(data).find("#Path").text();
                 // get the page name
-                var name = path.substring(path.lastIndexOf("/")+1,path.length);
+                var name = path.substring(path.lastIndexOf("/") + 1, path.length);
                 // if the page already existed it will stupidly postfix it with a number this can lead to problems
                 // so at least we should log a warning
-                if (pageName != name ){
-                    done(false,"createPage failed! page was created with different name!");
+                if (pageName != name) {
+                    done(false, "createPage failed! page was created with different name!");
                 }
                 // store the page path and name as dynamic data for reuse in hobs functions
                 if (dynParName != null) {
-                    hobs.param(dynParName,path);
+                    hobs.param(dynParName, path);
                 }
             })
             // request fails
-            .fail(function (jqXHR,textStatus,errorThrown){
+            .fail(function (jqXHR, textStatus, errorThrown) {
                 // log an error
-                done(false,"createPage failed! POST failed with: " + textStatus + "," + errorThrown);
+                done(false, "createPage failed! POST failed with: " + textStatus + "," + errorThrown);
             })
             // always executed, fail or success
-            .then(function(){
+            .then(function () {
                 done(true);
             })
     };
@@ -120,10 +120,10 @@
      * @param pagePath Mandatory. testPagePath path to the page to be deleted
      * @param done Optional. callback to be executed when the async method has finished.
      */
-    c.deletePage = function(pagePath,done){
+    c.deletePage = function (pagePath, done) {
         // mandatory check
-        if (pagePath == null || done == null ){
-            if(done) done(false, "deletePage failed! mandatory parameter(s) missing!");
+        if (pagePath == null || done == null) {
+            if (done) done(false, "deletePage failed! mandatory parameter(s) missing!");
             return;
         }
         jQuery.ajax({
@@ -133,11 +133,11 @@
                 ":operation": "delete"
             }
         })
-            .fail(function(jqXHR,textStatus,errorThrown){
-                done(false,"deletePage failed: POST failed with " + textStatus + "," + errorThrown);
+            .fail(function (jqXHR, textStatus, errorThrown) {
+                done(false, "deletePage failed: POST failed with " + textStatus + "," + errorThrown);
             })
             // always executed, fail or success
-            .then(function(){
+            .then(function () {
                 done(true);
             })
     };
@@ -152,15 +152,15 @@
      * @param nameHint           optional hint for the component nodes name, if empty component name is taken
      * @param order              optional where to place component e.g. 'before product_grid', if empty, 'last' is used
      */
-    c.addComponent = function(component, parentCompPath,dynParName, done, nameHint , order){
+    c.addComponent = function (component, parentCompPath, dynParName, done, nameHint, order) {
         // mandatory check
-        if (component == null || parentCompPath == null || done == null ){
-            if(done) done(false,"addComponent failed! mandatory parameter(s) missing!");
+        if (component == null || parentCompPath == null || done == null) {
+            if (done) done(false, "addComponent failed! mandatory parameter(s) missing!");
             return;
         }
 
         // default settings
-        if (nameHint == null) nameHint = component.substring(component.lastIndexOf("/")+1);
+        if (nameHint == null) nameHint = component.substring(component.lastIndexOf("/") + 1);
         if (order == null) order = "last";
 
         // the ajax call
@@ -168,25 +168,25 @@
             url: parentCompPath,
             method: "POST",
             data: {
-                "./sling:resourceType":component,
-                ":order":order,
-                "_charset_":"utf-8",
+                "./sling:resourceType": component,
+                ":order": order,
+                "_charset_": "utf-8",
                 ":nameHint": nameHint
 
             }
         })
-            .done(function(data,textStatus,jqXHR) {
+            .done(function (data, textStatus, jqXHR) {
                 // extract the component path from the returned HTML
-                if(dynParName != null){
-                    h.param(dynParName,jQuery(data).find("#Path").text());
+                if (dynParName != null) {
+                    h.param(dynParName, jQuery(data).find("#Path").text());
                 }
             })
             // in case of failure
-            .fail(function(jqXHR,textStatus,errorThrown){
-                done(false,"addComponent failed: POST failed with " + textStatus + "," + errorThrown);
+            .fail(function (jqXHR, textStatus, errorThrown) {
+                done(false, "addComponent failed: POST failed with " + textStatus + "," + errorThrown);
             })
             // always executed, fail or success
-            .then(function(){
+            .then(function () {
                 done(true);
             })
     };
@@ -198,10 +198,10 @@
      * @param data              Mandatory. object with properties to be set on the node.
      * @param done              Mandatory. callback function when post has returned
      */
-    c.editNodeProperties = function (componentPath,data,done){
+    c.editNodeProperties = function (componentPath, data, done) {
         // check mandatory
-        if ( componentPath == null || data == null || done == null){
-            if(done) done(false,"editNodeProperties failed! Mandatory param(s) missing.");
+        if (componentPath == null || data == null || done == null) {
+            if (done) done(false, "editNodeProperties failed! Mandatory param(s) missing.");
             return;
         }
         $.ajax({
@@ -211,10 +211,10 @@
             data: data
         })
             // in case of failure
-            .fail(function(jqXHR,textStatus,errorThrown){
-                done(false,"editNodeProperties failed: POST failed with " + textStatus + "," + errorThrown);
+            .fail(function (jqXHR, textStatus, errorThrown) {
+                done(false, "editNodeProperties failed: POST failed with " + textStatus + "," + errorThrown);
             })
-            .then(function(){
+            .then(function () {
                 done(true);
             })
     };
@@ -225,10 +225,10 @@
      * @param tag   Mandatory. the tag to be added
      * @param done  Mandatory. the callback to execute when post returns
      */
-    c.addTag = function(tag,done){
+    c.addTag = function (tag, done) {
         // mandatory check
-        if (tag == null|| done == null ){
-            if (done) done(false,"addTag failed! Mandatory param(s) missing.");
+        if (tag == null || done == null) {
+            if (done) done(false, "addTag failed! Mandatory param(s) missing.");
             return;
         }
         jQuery.ajax({
@@ -242,11 +242,11 @@
 
             }
         })
-            .fail(function(jqXHR,textStatus,errorThrown){
-                done(false,"addTag failed: POST failed with " + textStatus + "," + errorThrown);
+            .fail(function (jqXHR, textStatus, errorThrown) {
+                done(false, "addTag failed: POST failed with " + textStatus + "," + errorThrown);
             })
             // always executed, fail or success
-            .then(function(){
+            .then(function () {
                 done(true);
             })
     };
@@ -268,46 +268,46 @@
      * @param maxRetries    optional. number of retries, default 10
      * @param timeout       optional. timout in milliseconds between retries, default 500
      */
-    c.getJSON = function(url,dynParName,done,maxRetries,timeout){
+    c.getJSON = function (url, dynParName, done, maxRetries, timeout) {
         // check mandatory
-        if (url == null || dynParName == null || done == null){
-            if(done) done(false,"getJSON failed! Mandatory param(s) missing.");
+        if (url == null || dynParName == null || done == null) {
+            if (done) done(false, "getJSON failed! Mandatory param(s) missing.");
             return;
         }
 
         // check defaults
-        if(maxRetries == null) maxRetries = 10;
-        if(timeout == null) timeout = 500;
+        if (maxRetries == null) maxRetries = 10;
+        if (timeout == null) timeout = 500;
 
         // retry counter
         var retries = 0;
 
         // the polling function
-        var poll = function(){
+        var poll = function () {
             $.ajax({
                 url: url,
                 method: "GET",
                 dataType: "json"
             })
-                .done(function(data){
-                    h.param(dynParName,data);
+                .done(function (data) {
+                    h.param(dynParName, data);
                     done(true);
                 })
-                .fail(function(jqXHR,textStatus,errorThrown){
+                .fail(function (jqXHR, textStatus, errorThrown) {
                     // check if max retries was reached
-                    if (retries++ === maxRetries){
-                        done(false,"getJSON failed! GET failed with " + textStatus + "," + errorThrown);
+                    if (retries++ === maxRetries) {
+                        done(false, "getJSON failed! GET failed with " + textStatus + "," + errorThrown);
                         return;
                     }
                     // set for next retry
-                    setTimeout(poll,timeout);
+                    setTimeout(poll, timeout);
                 })
         };
         // start polling
         poll();
     };
 
-    c.openSidePanel = function(done){
+    c.openSidePanel = function (done) {
 
         maxRetries = 5;
         timeout = 500;
@@ -316,23 +316,23 @@
         var retries = 0;
 
         // the polling function
-        var poll = function(){
+        var poll = function () {
             // if the panel is closed
             if (h.find("#SidePanel.sidepanel-closed").size() == 1) {
                 // click on the toggle button, wait for the click to finish, then check
                 click(".toggle-sidepanel.editor-GlobalBar-item").exec().then(
-                    function (){
+                    function () {
                         // check if the panel is open
-                        if (h.find("#SidePanel.sidepanel-opened").size() == 1){
+                        if (h.find("#SidePanel.sidepanel-opened").size() == 1) {
                             done(true);
                         } else {
                             // check if max retries was reached
-                            if (retries++ === maxRetries){
-                                done(false,"Opening the Side Panel failed!");
+                            if (retries++ === maxRetries) {
+                                done(false, "Opening the Side Panel failed!");
                                 return;
                             }
                             // set for next retry
-                            setTimeout(poll,timeout);
+                            setTimeout(poll, timeout);
                         }
                     }
                 )
@@ -470,6 +470,36 @@
             .reload();
     };
 
+    c.closeSidePanel = new hobs.TestCase("Close side panel", {timeout: 2000})
+        .ifElse(function (opts) {
+            var clickToggle = hobs.find('.toggle-sidepanel.editor-GlobalBar-item').length > 0 &&
+                hobs.find('#SidePanel.sidepanel-opened').length > 0 &&
+                hobs.find('.toggle-sidepanel.editor-GlobalBar-item').length > 0;
+            return clickToggle;
+        },
+        click('.toggle-sidepanel.editor-GlobalBar-item')
+    );
+
+    c.disableTutorials = new hobs.TestCase("Disable Tutorials (preferences)")
+        .execFct(function (opts, done) {
+            // set language to config locale value
+            var result = Granite.HTTP.eval("/libs/granite/csrf/token.json");
+            var user = Granite.HTTP.eval(hobs.config.context_path + "/libs/cq/security/userinfo.json");
+            var data = {
+                "cq.authoring.editor.page.showTour62": false,
+                "cq.authoring.editor.page.showOnboarding62": false,
+                "cq.authoring.editor.template.showTour": false,
+                "cq.authoring.editor.template.showOnboarding": false,
+                "granite.shell.showonboarding620": false
+            };
+            data[':cq_csrf_token'] = result.token;
+            jQuery.post(hobs.config.context_path + user.home + "/preferences", data)
+                .always(function () {
+                    done();
+                });
+        }
+    );
+
     /**
      * Common stuff that should be done before each test case starts.
      */
@@ -494,13 +524,13 @@
         // reset the context
         .config.resetContext()
         // make sure the side panel is closed
-        .execTestCase(h.steps.aem.commons.closeSidePanel);
+        .execTestCase(c.closeSidePanel);
 
     /**
      * Stuff that should be done before a testsuite starts
      */
     c.tcExecuteBeforeTestSuite =  new TestCase("Setup Before Testsuite")
-        // disable annoying tutorial popups
-        .execTestCase(hobs.steps.aem.commons.disableTutorials)
+        // disable tutorial popups
+        .execTestCase(c.disableTutorials)
 
 }(hobs, jQuery));

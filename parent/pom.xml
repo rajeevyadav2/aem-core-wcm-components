@@ -571,37 +571,9 @@
             </dependency>
 
             <dependency>
-                <groupId>com.adobe.cq</groupId>
-                <artifactId>com.adobe.cq.wcm.core.junit.core</artifactId>
-                <version>0.9.6</version>
-                <scope>test</scope>
-            </dependency>
-
-            <dependency>
                 <groupId>com.google.code.findbugs</groupId>
                 <artifactId>jsr305</artifactId>
                 <version>2.0.0</version>
-                <scope>provided</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>com.adobe.cq</groupId>
-                <artifactId>cq-experience-fragments</artifactId>
-                <version>1.0.40</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.adobe.cq</groupId>
-                <artifactId>cq-experience-fragments-social</artifactId>
-                <version>1.0.4</version>
-                <scope>provided</scope>
-            </dependency>
-
-            <!-- Provide API com.adobe.cq.sightly >= 3.0.0 -->
-            <dependency>
-                <groupId>com.adobe.cq.sightly</groupId>
-                <artifactId>cq-wcm-sightly-extension</artifactId>
-                <version>1.4.14</version>
                 <scope>provided</scope>
             </dependency>
 
@@ -611,8 +583,8 @@
              -->
             <dependency>
                 <groupId>com.day.cq</groupId>
-                <artifactId>cq-quickstart</artifactId>
-                <version>6.3.0-load17</version>
+                <artifactId>cq-quickstart-beta</artifactId>
+                <version>6.3.0-load20b</version>
                 <classifier>apis</classifier>
                 <scope>provided</scope>
             </dependency>

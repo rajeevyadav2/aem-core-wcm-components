@@ -23,7 +23,7 @@
     <parent>
         <groupId>com.adobe.cq</groupId>
         <artifactId>core.wcm.components.parent</artifactId>
-        <version>0.9.50</version>
+        <version>0.9.51-SNAPSHOT</version>
         <relativePath>../parent/pom.xml</relativePath>
     </parent>
 
@@ -228,11 +228,6 @@
 
         <!-- Testing -->
         <dependency>
-            <groupId>com.adobe.cq</groupId>
-            <artifactId>com.adobe.cq.wcm.core.junit.core</artifactId>
-        </dependency>
-        <!-- Testing -->
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
@@ -258,18 +253,5 @@
             <version>2.0</version>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>com.adobe.cq</groupId>
-            <artifactId>core.wcm.components.core</artifactId>
-            <version>0.9.130</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.adobe.cq.sightly</groupId>
-            <artifactId>cq-wcm-sightly-extension</artifactId>
-        </dependency>
-
     </dependencies>
 </project>
