@@ -21,7 +21,7 @@ A set of standardized components that can be used to speed up development of web
 
 ## System Requirements
 
-The core components are build on top of the Sling Models API 1.3, which is part of AEM 6.3`
+The core components are build on top of the Sling Models API 1.3, which is part of `AEM 6.3`
 
 ## Installation
 
