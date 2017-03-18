@@ -27,7 +27,7 @@ The core components are build on top of the Sling Models API 1.3, which is part 
 
 To install everything the [released all package as released aggregate package](https://github.com/Adobe-Marketing-Cloud/aem-core-wcm-components/releases) can be installed via the AEM Package Manager.
 
-For more informations about the Package Manager please have a look at [How to Work With Packages](https://docs.adobe
+For more information about the Package Manager please have a look at [How to Work With Packages](https://docs.adobe
 .com/docs/en/aem/6-2/administer/content/package-manager.html) documentation page.
 
 ## Build
@@ -64,10 +64,10 @@ Please note that
  * ``-pl/-projects`` option specifies the list of projects that you want to install
  * ``-am/-also-make`` options specifies that dependencies should also be built
 
-## Include core-components as subpackage into your own project maven build
+## Include core components as subpackage into your own project maven build
 
-The released version of the core components are available on the public maven repository at http://repo.adobe.com. To include the the 
-core-components package into your own project maven build you can add the dependency
+The released version of the core components are available on the public maven repository at http://repo.adobe.com. To include the 
+core components package into your own project maven build you can add the dependency
  ```
  <dependency>
      <groupId>com.adobe.cq</groupId>
@@ -89,5 +89,5 @@ core-components package into your own project maven build you can add the depend
  
  to the `content-package-maven-plugin`.
  
- For more information how to setup the Adobe Maven Repository (repo.adobe.com) for your maven build, please have a look to the 
+ For more information how to setup the Adobe Maven Repository (repo.adobe.com) for your maven build, please have a look at the 
  related [Knowledge Base article](https://helpx.adobe.com/experience-manager/kb/SetUpTheAdobeMavenRepository.html)
