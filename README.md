@@ -21,15 +21,14 @@ A set of standardized components that can be used to speed up development of web
 
 ## System Requirements
 
-The core-components are build on top of the Sling Models API 1.3, which is part of AEM 6.3`
+The core components are build on top of the Sling Models API 1.3, which is part of AEM 6.3`
 
 ## Installation
 
-To install everything the [released all package](https://github.com/Adobe-Marketing-Cloud/aem-core-wcm-components/releases) can be installed via the AEM Package Manager.
+To install everything the [released all package as released aggregate package](https://github.com/Adobe-Marketing-Cloud/aem-core-wcm-components/releases) can be installed via the AEM Package Manager.
 
-For more informations about the Package Manager please have look to
-[How to Work With Packages](https://docs.adobe.com/docs/en/aem/6-2/administer/content/package-manager.html)
-documentation page.
+For more informations about the Package Manager please have a look at [How to Work With Packages](https://docs.adobe
+.com/docs/en/aem/6-2/administer/content/package-manager.html) documentation page.
 
 ## Build
 
@@ -67,7 +66,7 @@ Please note that
 
 ## Include core-components as subpackage into your own project maven build
 
-The released version of the core-components are available on the public maven repository at http://repo.adobe.com. To include the the 
+The released version of the core components are available on the public maven repository at http://repo.adobe.com. To include the the 
 core-components package into your own project maven build you can add the dependency
  ```
  <dependency>
